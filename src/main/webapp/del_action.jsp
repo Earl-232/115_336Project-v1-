@@ -12,7 +12,7 @@
 
 <% try {
 	
-	String url = "jdbc:mysql://localhost:3306/user_details";
+	String url = "jdbc:mysql://localhost:3306/buyMe";
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	Connection conn = DriverManager.getConnection(url,"root","csdata336");	

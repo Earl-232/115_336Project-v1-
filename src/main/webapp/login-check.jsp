@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.cs336.pkg.*"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"  %>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"  %>
 
@@ -13,56 +13,38 @@
 <body>
 <% try {
 	
-	String url = "jdbc:mysql://localhost:3306/user_details";
 	
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(url,"root","csdata336");
-	Statement stmt = conn.createStatement();
+	ApplicationDB db = new ApplicationDB();
+	Connection con = db.getConnection();
+	Statement stmt = con.createStatement();
 	
 	String user = request.getParameter("loguser");
 	String password = request.getParameter("logpass");
 	
-	String check_user = "SELECT * FROM user_list";
-	int user_exsist = 0;
-	int user_pass = 0;
-	
-	ResultSet all_userpass = stmt.executeQuery(check_user);
-	
-	while(all_userpass.next()){
-		if(all_userpass.getString("username").equals(user)&&all_userpass.getString("password").equals(password)){
-			user_exsist = 1;
-			user_pass = 1;
-			break;
-		}
-		if(all_userpass.getString("username").equals(user)&&!all_userpass.getString("password").equals(password)){
-			user_exsist = 1;
-			user_pass = 0;
-		}
-	}
-	
-	if(user_exsist==1&&user_pass==1){
-		HttpSession sesh = request.getSession();
-		sesh.setAttribute("uname", user);
+	String quer = String.format("SELECT * FROM user_list WHERE username = %s and password = %s","'"+user+"'", "'"+password+"'");
 
-		out.print("login successful!");
-		response.sendRedirect("home.jsp");
+	ResultSet res = stmt.executeQuery(quer);
+	
+
+	
+	if(!res.next()){
+		String web = "http://localhost:3306/cs336Sample/loginFail.jsp";
+		response.sendRedirect("loginFail.jsp");
 		
 	}
-	
-	if(user_exsist==1 && user_pass!=1){
-		out.print("incorrect password");
+	else{
+		session.setAttribute("uname", user);
+		String web = "http://localhost:3306/cs336Sample/home.jsp";
+		response.sendRedirect("home.jsp");
 	}
-	
-	if(user_exsist==0){
-		out.print("username does not exsist");
-	}
-	all_userpass.close();
-	stmt.close();
-	conn.close();
+		
+		
+		con.close();
 	
 }	
 catch (Exception e){
 	out.print(e);
+	
 	}
 
 

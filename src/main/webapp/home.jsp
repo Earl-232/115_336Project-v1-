@@ -19,5 +19,11 @@ HttpSession sesh = request.getSession(true);
 <form method="post" action = "logout.jsp">
 <input type="submit" value = "loggout">
 </form>
+<form method="post" action ="createAuc.jsp">
+<input type = "submit" value = "Create New Auction">
+</form>
+<form method="post" action ="showAuc.jsp">
+<input type = "submit" value = "Show Auctions">
+</form>
 </body>
 </html>
