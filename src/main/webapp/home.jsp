@@ -25,6 +25,6 @@ HttpSession sesh = request.getSession(true);
 <form method="post" action ="showAuc.jsp">
 <input type = "submit" value = "Show Auctions">
 </form>
-
+<% %>
 </body>
 </html>
