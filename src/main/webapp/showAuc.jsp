@@ -13,10 +13,10 @@
 <form method="post" action="manualBid.jsp">
 		<input type="submit" value="Manually Bid" />
 	</form>
-	<form method="post" action="AutomaticAuction.jsp">
+	<form method="post" action="autoBid.jsp">
 		<input type="submit" value="Automatically Bid" />
 	</form>
-	<form method="post" action="Search.jsp">
+	<form method="post" action="searchAuc.jsp">
 		<input type="submit" value="Filter Auctions" />
 	</form>
 <br>
