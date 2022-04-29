@@ -10,7 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 <% try{
+	//test update
 	ApplicationDB db = new ApplicationDB();
 	Connection con = db.getConnection();
 	
