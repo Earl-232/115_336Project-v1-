@@ -15,7 +15,7 @@
 	String url = "jdbc:mysql://localhost:3306/buyMe";
 	
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(url,"root","csdata336");	
+	Connection conn = DriverManager.getConnection(url,"root","Cranfordgirl8!");	
 	Statement stmt = conn.createStatement();
 	
 	String user = request.getParameter("deluser");

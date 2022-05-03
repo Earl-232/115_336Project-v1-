@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*, java.sql.Timestamp, java.time.LocalDateTime, java.time.format.DateTimeFormatter"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"%>
+<%@ page import= "com.cs336.pkg.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,9 +12,10 @@
 <body>
 <%
 try {
-	String url = "jdbc:mysql://localhost:3306/buyMe";
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(url,"root","csdata336");
+	ApplicationDB db= new ApplicationDB();
+	Connection conn= db.getConnection();
+	
+	
 
 	
 	Statement stmt = conn.createStatement();

@@ -9,6 +9,7 @@
 <title>Create Account</title>
 </head>
 <h1> Create an Account</h1>
+<body>
 	<form method="get" action="aftercreate.jsp">
 		<table>	
 			<tr>
@@ -22,7 +23,7 @@
 	</form>
 <form method="post" action="login.jsp">
 <input type="submit" value="Return to Login">
-<body>
+
 </form>
 
 </body>

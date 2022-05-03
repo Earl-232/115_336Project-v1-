@@ -16,8 +16,22 @@
 	<form method="post" action="autoBid.jsp">
 		<input type="submit" value="Automatically Bid" />
 	</form>
+<<<<<<< Updated upstream
 	<form method="post" action="searchAuc.jsp">
 		<input type="submit" value="Filter Auctions" />
+=======
+	<form method="post" action="showHistory.jsp">
+		<input type="submit" value="Show Auction History" />
+	</form>
+	<form method="post" action="getUserforBuyerHist.jsp">
+		<input type="submit" value="Search A Buyer's History" />
+	</form>
+	<form method="post" action="getUserforSellerHist.jsp">
+		<input type="submit" value="Search A Seller's History" />
+	</form>
+	<form method="post" action="search.jsp">
+		<input type="submit" value="Search Auctions" />
+>>>>>>> Stashed changes
 	</form>
 <br>
 <% try{
