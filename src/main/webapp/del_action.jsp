@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"  %>
 <%@ page import="javax.servlet.http.*,javax.servlet.*"  %>
+<%@ page import="com.cs336.pkg.*" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +14,8 @@
 
 <% try {
 	
-	String url = "jdbc:mysql://localhost:3306/buyMe";
-	
-	Class.forName("com.mysql.jdbc.Driver");
-	Connection conn = DriverManager.getConnection(url,"root","Cranfordgirl8!");	
+	ApplicationDB db = new ApplicationDB();
+	Connection conn = db.getConnection();
 	Statement stmt = conn.createStatement();
 	
 	String user = request.getParameter("deluser");

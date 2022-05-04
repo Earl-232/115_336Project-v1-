@@ -35,7 +35,7 @@ try {
 	String userName = (String)session.getAttribute("uname");
 	String itemName = request.getParameter("itemName");
 	String itemType = request.getParameter("itemType");
-	String itemSize = request.getParameter("iteSize");
+	String itemSize = request.getParameter("itemSize");
 	String itemColor = request.getParameter("itemColor");
 	String itemBrand = request.getParameter("itemBrand");
 	float startPrice = Float.valueOf(request.getParameter("startPrice"));

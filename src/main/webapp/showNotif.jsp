@@ -63,7 +63,7 @@ result = stmt.executeQuery(showAlerts);
 			<tr style="padding: 1em">
 				<td style="padding: 1em"><%=result.getString("itemName")%></td>
 				<td style="padding: 1em"><%=result.getString("itemType")%></td>
-				<td style="padding: 1em"><%=result.getString("isAvaliable")%></td>
+				<td style="padding: 1em"><%=result.getString("isAvailable")%></td>
 			</tr>
 			<br>
 			

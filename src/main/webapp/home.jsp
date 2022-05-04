@@ -50,7 +50,7 @@ HttpSession sesh = request.getSession(true);
 	}
 	
 	for(int i=0;i<closedAuctions.size();i++){
-		String updateAuc = "UPDATE currAuc SET status = ? WHERE AID = ?";
+		String updateAuc = "UPDATE currAuc SET status = ? WHERE AucID = ?";
 		ps = con.prepareStatement(updateAuc);
 		
 		ps.setString(1,"closed");
@@ -67,7 +67,7 @@ HttpSession sesh = request.getSession(true);
 		}
 	
 	
-	String sertPurchase = "INSERET INTO purchased(username,AucID,isWinner) VALUES(?,?,?)";
+	String sertPurchase = "INSERT INTO purchased(username,AucID,isWinner) VALUES(?,?,?)";
 	ps = con.prepareStatement(sertPurchase);
 	
 	ps.setString(1,closedAuctions.get(i).getuname());
@@ -77,7 +77,7 @@ HttpSession sesh = request.getSession(true);
 	
 	int notifID = 0;
 	
-	String temp = "SELECT MAX(mID) from notif";
+	String temp = "SELECT MAX(alertID) from notif";
 	
 	result = stmt.executeQuery(temp);
 	if(result.next()){
@@ -99,6 +99,13 @@ HttpSession sesh = request.getSession(true);
 	ps.executeUpdate();
 	
 	}
+	
+	//check if autoBidders upLimit has been exceeded (might add to checkManualBid)
+	
+	
+	
+	
+	
 	db.closeConnection(con);
 	
 	
