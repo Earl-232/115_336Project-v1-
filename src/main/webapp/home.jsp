@@ -17,7 +17,7 @@ HttpSession sesh = request.getSession(true);
 <p> This is the Home Page, Welcome to BuyMe <b> <%out.print((String)sesh.getAttribute("uname")); %></b></p>
 
 <form method="post" action = "logout.jsp">
-<input type="submit" value = "loggout">
+<input type="submit" value = "logout">
 </form>
 <form method="post" action ="createAuc.jsp">
 <input type = "submit" value = "Create New Auction">

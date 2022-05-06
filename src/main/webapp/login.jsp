@@ -28,6 +28,14 @@
 	<form method="post" action="delete_account.jsp">
 	<input type ="submit" value="delete account">
 	</form>
+	
+	<form method="post" action="admin_account.jsp">
+	<input type ="submit" value="admin login">
+	</form>
+	
+	<form method="post" action="customerRep_account.jsp">
+	<input type ="submit" value="customer rep login">
+	</form>
 
 <br>
 <body>
