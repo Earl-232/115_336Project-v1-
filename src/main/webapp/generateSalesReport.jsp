@@ -15,8 +15,8 @@
 	<br>
 	<form action="bestSelling.jsp">
   		<label for="bestSellingList">Best Selling:</label>
-		  <select name="bestSellingType" id="bestSellingTypeID">
-		    <option value="item">item</option>
+		  <select name="bestSellingType" id="bestSellingType">
+		    <option value="item">items</option>
 		    <option value="end-user">end user</option>
 		  </select>
   		<br>
@@ -25,7 +25,7 @@
 	<br>
 	<form action="earningsPer.jsp">
   		<label for="earningsPerList">Earnings per:</label>
-		  <select name="earningPerType" id="earningPerType">
+		  <select name="earningsPerType" id="earningsPerType">
 		    <option value="item">item</option>
 		    <option value="item-type">item type</option>
 		    <option value="end-user">end user</option>

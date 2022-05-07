@@ -11,35 +11,42 @@
 </head>
 <body>
 
-<h1>Total Earnings Sales Report</h1>
+<h1>Total Earnings Summary Sales Report</h1>
 <% try {
 	
 		ApplicationDB db = new ApplicationDB();
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		
-		String query = String.format("SELECT sum(xxxx) as total FROM xxxx");
+		String query = String.format("SELECT sum(currPrice) as total FROM currAuc");
 		
 		ResultSet res = stmt.executeQuery(query);
-		
-		if(res.equals(null)){
-			response.sendRedirect("salesReportErr.jsp");
-		} else {
-			%>
-			<table>	
-			<tr>
-				<td>Total Earnings: </td><td>res</td>
-			</tr>
-		</table> 
-		<% 
-		}	
-			con.close();
-	
+		%>
+		<table style="padding: 2em">
+		<tr>
+			<td style="padding: 1em">Total Earnings:</td>
+		</tr>
+		<% while (res.next()){ %>
+		<tr style="padding: 1em">
+			<td style="padding: 1em">$<%= res.getFloat("total")%></td>
+		</tr>
+		<% } 
+			db.closeConnection(con);
+		%>
+</table>
+	<% 
 		}	
 		catch (Exception e){
 			out.print(e);
 	
 		}
 	%>
+	<form method="post" action="admin-controls.jsp">
+	<input type="submit" value="Return to Admin Controls">
+	</form>
+	<br>
+	<form method="post" action="generateSalesReport.jsp">
+	<input type="submit" value="Generate another summary sales report">
+	</form>
 </body>
 </html>

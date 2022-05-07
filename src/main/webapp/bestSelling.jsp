@@ -12,8 +12,14 @@
 <body>
 <%
 String type = request.getParameter("bestSellingType"); 
+if (type.equals("item")){
+	%>
+	<h1>Summary Sales Report for Best Selling Items </h1>
+<%} else{
+	%> <h1>Summary Sales Report for Best Buyers </h1>
+	<%
+	}
 %>
-<h1>Summary Sales Report for best selling <b> <%out.print(type); %></b> </h1>
 
 <% try {
 	
@@ -21,28 +27,62 @@ String type = request.getParameter("bestSellingType");
 		Connection con = db.getConnection();
 		Statement stmt = con.createStatement();
 		
-		String query = String.format("SELECT sum(xxxx) as total FROM xxxx");
 		
-		ResultSet res = stmt.executeQuery(query);
-		
-		if(res.equals(null)){
-			response.sendRedirect("salesReportErr.jsp");
-		} else {
+		if(type.equals("item")){
+			
+			//String query = String.format("SELECT itemName, currPrice FROM currAuc ORDER BY currPrice DESC");
+			String query = String.format("SELECT itemName, currPrice FROM currAuc WHERE status = \'closed\' ORDER BY currPrice DESC");
+			ResultSet res = stmt.executeQuery(query);
 			%>
-			<table>	
-			<tr>
-				<td>Total Earnings: </td><td>res</td>
-			</tr>
-		</table> 
-		<% 
-		}	
-			con.close();
-	
+		<table style="padding: 2em">
+		<tr>
+			<td style="padding: 1em">Item</td>
+			<td style="padding: 1em">Item Price</td>
+		</tr>
+		<% while (res.next()){ %>
+		<tr style="padding: 1em">
+			<td style="padding: 1em"><%= res.getString("itemName")%></td>
+			<td style="padding: 1em"><%= res.getFloat("currPrice")%></td>
+		</tr>
+		<% } 
+			db.closeConnection(con);
+		%>
+</table>
+	<% 
+		} else{
+			String query = String.format("SELECT username, SUM(currPrice) as totalSpent FROM currAuc WHERE status = \'closed\' GROUP BY username ORDER BY totalSpent DESC");
+			//String query = String.format("SELECT username, SUM(currPrice) as totalSpent FROM currAuc GROUP BY username ORDER BY totalSpent DESC");
+			ResultSet res = stmt.executeQuery(query);
+			%>
+		<table style="padding: 2em">
+		<tr>
+			<td style="padding: 1em">Buyer</td>
+			<td style="padding: 1em">Total Amount Spent</td>
+		</tr>
+		<% while (res.next()){ %>
+		<tr style="padding: 1em">
+			<td style="padding: 1em"><%= res.getString("username")%></td>
+			<td style="padding: 1em"><%= res.getFloat("totalSpent")%></td>
+		</tr>
+		<% } 
+			db.closeConnection(con);
+		%>
+</table>
+	<% 
+		}
+		
 		}	
 		catch (Exception e){
 			out.print(e);
 	
 		}
 	%>
+	<form method="post" action="admin-controls.jsp">
+	<input type="submit" value="Return to Admin Controls">
+	</form>
+	<br>
+	<form method="post" action="generateSalesReport.jsp">
+	<input type="submit" value="Generate another summary sales report">
+	</form>
 </body>
 </html>
