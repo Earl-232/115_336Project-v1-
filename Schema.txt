@@ -6,3 +6,4 @@
 #create table admin_login(username char(50), password char(50), primary key(username));
 #insert into admin_login value ('adminuser', 'adminpass');
 #create table customerRepLogin(username char(50), password char(50), primary key(username));
+#create table questions(qID int, username char(50), question char(200), reply char(200), replyCode int, primary key(qID)); 
