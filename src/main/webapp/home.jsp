@@ -17,13 +17,16 @@ HttpSession sesh = request.getSession(true);
 <p> This is the Home Page, Welcome to BuyMe <b> <%out.print((String)sesh.getAttribute("uname")); %></b></p>
 
 <form method="post" action = "logout.jsp">
-<input type="submit" value = "logout">
+<input type="submit" value = "Logout">
 </form>
 <form method="post" action ="createAuc.jsp">
 <input type = "submit" value = "Create New Auction">
 </form>
 <form method="post" action ="showAuc.jsp">
 <input type = "submit" value = "Show Auctions">
+</form>
+<form method="post" action ="questions.jsp">
+<input type = "submit" value = "Ask a question">
 </form>
 <% %>
 </body>
