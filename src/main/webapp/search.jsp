@@ -16,8 +16,10 @@
 			  <option value="Shirt">Shirt</option>
 			  <option value="Pants">Pants</option>
 			  <option value="Shoes">Shoes</option>
-			  <option value="Highest to Lowest">Highest to Lowest</option>
-			  <option value="Lowest to Highest">Lowest to Highest</option>
+			  <option value="Open">Open Auctions</option>
+			  <option value="Closed">Closed Auctions</option>
+			  <option value="Highest to Lowest">Highest to Lowest Bids</option>
+			  <option value="Lowest to Highest">Lowest to Highest Bids</option>
 		</select>
 		<input type="submit" value="Search">
 	</form>

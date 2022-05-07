@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<form method="post" action="checkAuc.jsp">
+	<form method="post" action="showAuc.jsp">
 		<input type="submit" value="Back to All Auctions" />
 	</form>
 	<form method="post" action="home.jsp">
@@ -28,7 +28,7 @@
 	
 			
 			String item = (String)request.getParameter("sortname");
-			out.print("item is:" + item);
+			
 			
 			//Make a SELECT query from currauc
 			String str = "SELECT * FROM currAuc";
@@ -39,6 +39,10 @@
 				str = "SELECT * FROM currAuc WHERE itemType = \"" + item + "\"";
 			}else if(item.equals("Pants")){
 				str = "SELECT * FROM currAuc WHERE itemType = \"" + item + "\"";
+			}else if(item.equals("Open Auctions")){
+				str = "SELECT * FROM currAuc WHERE status = open";
+			}else if(item.equals("Closed Auctions")){
+				str = "SELECT * FROM currAuc WHERE status = closed";
 			}else if(item.equals("Highest to Lowest")){
 				str = "SELECT * FROM currAuc ORDER BY currPrice DESC;";
 			}else if(item.equals("Lowest to Highest")){
