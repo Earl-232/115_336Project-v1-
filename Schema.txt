@@ -1,7 +1,22 @@
- #create database buyMe;
+#--tables + DB
+#create database buyMe;
 #create table user_list (username char(50), password char(50),primary key(username));
 #create table currAuc(AucID int,itemName char(50),itemType char(50), itemSize char(50),itemColor char(50),itemBrand char(50),startPrice float,currPrice float,reserveAmount float, endDate datetime,status char(50),owner char(50), username char(50));
 #create table notif(alertID int,messageTime timestamp,AucID int,username char(50),subject char(50),message char(200));
 #create table bid(AucID int, username char(50), currPrice float);
 #create table purchased(username char(50),AucID int ,isWinner char(60));
-#create table alerts(itemName char(50), itemType char(50),username char(
+#create table alerts(itemName char(50), itemType char(50),username char(50), isAvailable char(50));
+#create table autoAuc(AucID int,username char(50),upLimit float ,bidInc int);
+#--assistautoAucautoAuc
+
+#DELETE  FROM currAuc;
+#DELETE FROM alerts;
+#DELETE FROM notif;
+#DELETE FROM purchased;
+#DELETE from bid;
+#ELETE FROM autoAuc;
+
+SELECT * from bid
+#ELECT * FROM autoAuc;
+#SELECT * FROM currAuc
+#Select * from user_list
