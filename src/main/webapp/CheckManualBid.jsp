@@ -53,6 +53,9 @@ try {
 		allAutoBids.add(new autoBid(res.getInt("AucID"),res.getFloat("bidInc"),res.getInt("upLimit"),res.getString("username")));
 	}
 	
+	if(allAutoBids.size()>0){
+		
+	
 	for(int i=0;i<allAutoBids.size();i++){
 		/*String checkAB1 = "SELECT max(currPrice) FROM bid WHERE AucID =\"" + allAutoBids.get(i).getAucID();
 		res = stmt.executeQuery(checkAB1);
@@ -90,16 +93,23 @@ try {
 		}
 		//alert user that upper limit has been exceeded
 		if(thisPrice>limit){
-			allAutoBids.remove(allAutoBids.get(i));
+			
 			limitAlerts.add(new Alert(uname2,allAutoBids.get(i).getAucID()));
+			String remAutoAuc = "DELETE FROM autoAuc WHERE aucID = ? AND username = ? ";
+			PreparedStatement posty = con.prepareStatement(remAutoAuc);
+			posty.setInt(1,allAutoBids.get(i).getAucID());
+			posty.setString(2,allAutoBids.get(i).getuname());
+			posty.executeUpdate();
+			allAutoBids.remove(allAutoBids.get(i));
 		}
 	}
-	
+	}
 	
 	//send alerts to those whose limits were exceeded
 	
 	int alertID = 0;
-	
+	if(limitAlerts.size()>0){
+		
 	for(int i=0;i<limitAlerts.size();i++){
 		String limitCheck = "SELECT max(alertID) FROM notif";
 		ResultSet rest = stmt.executeQuery(limitCheck);
@@ -113,17 +123,18 @@ try {
 		
 		String msg1 = "Your autoBidding limit has been exceed for Auction: " + limitAlerts.get(i).getAucID();
 		String sertNotif = "INSERT INTO notif(alertID,messageTime,AucID,username,subject,message)" + "VALUE(?,?,?,?,?,?)";
+		PreparedStatement pres = con.prepareStatement(sertNotif);
+		pres.setInt(1,alertID);
+		pres.setTimestamp(2,new java.sql.Timestamp(new java.util.Date().getTime()));
+		pres.setInt(3,limitAlerts.get(i).getAucID());
+		pres.setString(4,limitAlerts.get(i).getuname());
+		pres.setString(5,"limit exceeded");
+		pres.setString(6,msg1);
+		pres.executeUpdate();
 		
-		ps.setInt(1,alertID);
-		ps.setTimestamp(2,new java.sql.Timestamp(new java.util.Date().getTime()));
-		ps.setInt(3,limitAlerts.get(i).getAucID());
-		ps.setString(4,limitAlerts.get(i).getuname());
-		ps.setString(5,"limit exceeded");
-		ps.setString(6,msg1);
-		ps.executeUpdate();
 		
 	}
-	
+	}
 	
 	//prepare to send alerts
 	String checkBuy = "SELECT * FROM bid WHERE currPrice < + " + bidPrice + " AND AucID = " + bidAucID;
@@ -138,6 +149,7 @@ try {
 	
 	 alertID = 0;
 	
+	if(allAlerts.size()>0){
 	for(int i=0;i<allAlerts.size();i++){
 		String temp = "SELECT MAX(alertID) FROM notif";
 		
@@ -161,7 +173,7 @@ try {
 		ps.setString(6,msg);
 		ps.executeUpdate();
 	}
-	
+	}
 	con.close();
 	response.sendRedirect("showAuc.jsp");
 	
