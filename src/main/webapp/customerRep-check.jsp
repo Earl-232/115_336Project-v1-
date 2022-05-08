@@ -31,6 +31,7 @@
 		}
 		else {
 			//change this to go to customer rep page
+			session.setAttribute("uname", user);
 			String web = "http://localhost:3306/cs336Sample/customerRepControls.jsp";
 			response.sendRedirect("customerRepControls.jsp");
 		}

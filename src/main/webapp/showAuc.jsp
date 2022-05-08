@@ -11,26 +11,29 @@
 </head>
 <body>
 <form method="post" action="manualBid.jsp">
-		<input type="submit" value="Manually Bid" />
-	</form>
-	<form method="post" action="AutomaticAuction.jsp">
-		<input type="submit" value="Automatically Bid" />
-	</form>
-	<form method="post" action="showHistory.jsp">
-		<input type="submit" value="Show Auction History" />
-	</form>
-	<form method="post" action="getUserforBuyerHist.jsp">
-		<input type="submit" value="Search A Buyer's History" />
-	</form>
-	<form method="post" action="getUserforSellerHist.jsp">
-		<input type="submit" value="Search A Seller's History" />
-	</form>
-	<form method="post" action="search.jsp">
-		<input type="submit" value="Search Auctions" />
-	</form>
-	<form method="post" action="simhist.jsp">
-		<input type="submit" value="Check for Past Similar Auctions" />
-	</form>
+	<input type="submit" value="Manually Bid" />
+</form>
+<form method="post" action="autoBid.jsp">
+	<input type="submit" value="Automatically Bid" />
+</form>
+<form method="post" action="search.jsp">
+	<input type="submit" value="Search Auctions" />
+</form>
+<form method="post" action="simhist.jsp">
+	<input type="submit" value="Check for Past Similar Auctions" />
+</form>
+<form method="post" action="showHistory.jsp">
+	<input type="submit" value="Show Auction History" />
+</form>
+<form method="post" action="getUserforBuyerHist.jsp">
+	<input type="submit" value="Search A Buyer's History" />
+</form>
+<form method="post" action="getUserforSellerHist.jsp">
+	<input type="submit" value="Search A Seller's History" />
+</form>
+<form method="post" action="home.jsp">
+	<input type ="submit" value="Back to home page">
+</form>
 	
 <br>
 <% try{
@@ -79,7 +82,6 @@ catch (Exception e){
 			out.print(e);
 		}
 	%>
-
-
 </body>
 </html>
+	

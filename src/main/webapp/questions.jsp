@@ -10,6 +10,10 @@
 </head>
 <body>
 <h1>Q and A</h1>
+	<form method="post" action="home.jsp">
+		<input type ="submit" value="Back to home page">
+	</form>
+	<br>
 	<form method="get" action="askQuestion.jsp">
 		<label>Ask a question:</label>
 		<br>
@@ -27,10 +31,6 @@
 		<input type ="submit" value="Search">
 	</form>
 	<br>
-	<form method="post" action="login.jsp">
-		<input type ="submit" value="Back to login page">
-	</form>
-<br>
 <label>All questions:</label>
 <% try{
 	String url = "jdbc:mysql://localhost:3306/buyMe";
@@ -55,7 +55,7 @@
 			<td style="padding: 1em"><%= res.getString("question")%></td>
 			<td style="padding: 1em"><%= res.getString("reply")%></td>
 			<td>
-				<form method="post" action="reply.jsp">
+				<form method="post" action="replyCheck.jsp">
 				<input type="submit" value="Add reply">
 				</form>
 			</td>

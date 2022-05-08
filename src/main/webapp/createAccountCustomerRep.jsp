@@ -9,13 +9,13 @@
 <body>
 <h1> Enter the credentials for a new account!</h1>
 	
-	<form method="get" action="addNewAccount.jsp">
+	<form method="get" action="addNewCustomerRep.jsp">
 		<table>	
 			<tr>
-				<td>New Account Username</td><td><input type="text" name = "newUser"></td>
+				<td>New Account Username</td><td><input type="text" name = "newRepUser"></td>
 			</tr>
 			<tr>
-				<td>New Account Password</td><td><input type="text" name = "newPass"></td>
+				<td>New Account Password</td><td><input type="text" name = "newRepPass"></td>
 			</tr>
 		</table>
 		<input type = "submit" value="Create Account">

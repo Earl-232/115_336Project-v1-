@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Place Manual Bid</title>
 </head>
 <body>
 <form method="post" action="CheckManualBid.jsp">
@@ -20,6 +20,8 @@
 		</table>
 		<input type="submit" value="Place Bid">
 	</form>
-
+<form method="post" action="showAuc.jsp">
+		<input type="submit" value="Return to Auctions" />
+</form>
 </body>
 </html>

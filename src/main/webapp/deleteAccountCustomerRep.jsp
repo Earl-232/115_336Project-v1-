@@ -14,9 +14,6 @@
 			<tr>
 				<td>Account Username</td><td><input type="text" name = "exUser"></td>
 			</tr>
-			<tr>
-				<td>Account Password</td><td><input type="text" name = "exPass"></td>
-			</tr>
 		</table>
 		<input type = "submit" value="Delete Account">
 	</form>

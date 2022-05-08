@@ -23,7 +23,9 @@
 		</select>
 		<input type="submit" value="Search">
 	</form>
-
+	<form method="post" action="showAuc.jsp">
+		<input type="submit" value="Return to Auctions" />
+	</form>
 
 </body>
 </html>

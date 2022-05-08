@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Buyer History</title>
 </head>
 <body>
 	<!-- <form method="post" action="BidHistory.jsp">
@@ -53,6 +53,7 @@
 			db.closeConnection(con);
 			%>
 	</table>
+
 
 
 	<%} catch (Exception e) {

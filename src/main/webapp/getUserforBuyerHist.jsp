@@ -16,5 +16,8 @@
 		</table>
 		<input type="submit" value="View History">
 	</form>
+	<form method="post" action="showAuc.jsp">
+		<input type="submit" value="Return to Auctions" />
+	</form>
 </body>
 </html>

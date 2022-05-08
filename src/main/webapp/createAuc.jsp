@@ -49,5 +49,8 @@
 				</table>
 	<input type="submit" value="Create Auction">
 </form>
+<form method="post" action="home.jsp">
+		<input type ="submit" value="Back to home page">
+</form>
 </body>
 </html>

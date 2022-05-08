@@ -7,9 +7,12 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Auction History</title>
 </head>
 <body>
+	<form method="post" action="showHistory.jsp">
+		<input type="submit" value="Search Again" />
+	</form>
 	<form method="post" action="showAuc.jsp">
 		<input type="submit" value="Back to All Auctions" />
 	</form>
@@ -21,15 +24,22 @@
 			Connection con = db.getConnection();		
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
-			int AucID = Integer.parseInt(request.getParameter("AucID"));
 			
+			String AucID = (String)request.getParameter("AucID");
+			String user = (String)request.getParameter("user"); 
+			String quer = null; 
 			
-			//Make a SELECT query from Events
+			if(AucID.equals("")){
+				quer = String.format("SELECT * FROM bid WHERE username = %s","'" + user + "'");
+			}else if(user.equals("")){
+				quer = String.format("SELECT * FROM bid WHERE AucID = %s","'" + AucID + "'");
+			}else{
+				quer = String.format("SELECT * FROM bid WHERE AucID = %s AND username = %s","'" + AucID + "'","'" + user + "'");
+			}
 			
-				String str = "SELECT * FROM bid WHERE AucID = " + AucID;
 			
 			//Run the query against the database.
-			ResultSet result = stmt.executeQuery(str);
+			ResultSet result = stmt.executeQuery(quer);
 		%>
 
 	<!--  Make an HTML table to show the results in: -->
@@ -37,6 +47,7 @@
 		<tr>
 			<td style="padding: 1em">User</td>
 			<td style="padding: 1em">Bid</td>
+			<td style="padding: 1em">Auction</td>
 		</tr>
 		<%
 			//parse out the results
@@ -44,6 +55,7 @@
 		<tr style="padding: 1em">
 			<td style="padding: 1em"><%= result.getString("username")%></td>
 			<td style="padding: 1em"><%= result.getString("currPrice")%></td>
+			<td style="padding: 1em"><%= result.getString("AucID")%></td>
 		</tr>
 
 
@@ -55,7 +67,7 @@
 
 
 	<%} catch (Exception e) {
-			out.print(e);
+		response.sendRedirect("aucHistSearchFail.jsp");
 		}%>
 </body>
 </html>

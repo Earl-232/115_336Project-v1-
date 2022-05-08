@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Seller History</title>
 </head>
 <body>
 	<!-- <form method="post" action="BidHistory.jsp">

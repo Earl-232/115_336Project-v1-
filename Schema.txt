@@ -7,3 +7,6 @@
 #insert into admin_login value ('adminuser', 'adminpass');
 #create table customerRepLogin(username char(50), password char(50), primary key(username));
 #create table questions(qID int, username char(50), question char(200), reply char(200), replyCode int, primary key(qID)); 
+#create table purchased(username char(50),AucID int ,isWinner char(60));
+#create table alerts(itemName char(50), itemType char(50),username char(50), isAvailable char(50));
+#create table autoAuc(AucID int,username char(50),upLimit float ,bidInc int);

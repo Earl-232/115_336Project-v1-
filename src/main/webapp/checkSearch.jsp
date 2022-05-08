@@ -10,12 +10,14 @@
 <title>Auctions:</title>
 </head>
 <body>
-
+	<form method="post" action="search.jsp">
+		<input type="submit" value="New Search" />
+	</form>
 	<form method="post" action="showAuc.jsp">
-		<input type="submit" value="Back to All Auctions" />
+		<input type="submit" value="Return to All Auctions" />
 	</form>
 	<form method="post" action="home.jsp">
-		<input type="submit" value="Go to Home" />
+		<input type="submit" value="Return to Home" />
 	</form>
 	<br>
 	<% try {
@@ -39,10 +41,10 @@
 				str = "SELECT * FROM currAuc WHERE itemType = \"" + item + "\"";
 			}else if(item.equals("Pants")){
 				str = "SELECT * FROM currAuc WHERE itemType = \"" + item + "\"";
-			}else if(item.equals("Open Auctions")){
-				str = "SELECT * FROM currAuc WHERE status = open";
-			}else if(item.equals("Closed Auctions")){
-				str = "SELECT * FROM currAuc WHERE status = closed";
+			}else if(item.equals("Open")){
+				str = "SELECT * FROM currAuc WHERE status = \"" + item + "\"";
+			}else if(item.equals("Closed")){
+				str = "SELECT * FROM currAuc WHERE status = \"" + item + "\"";
 			}else if(item.equals("Highest to Lowest")){
 				str = "SELECT * FROM currAuc ORDER BY currPrice DESC;";
 			}else if(item.equals("Lowest to Highest")){

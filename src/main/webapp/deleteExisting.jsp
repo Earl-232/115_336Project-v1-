@@ -19,43 +19,32 @@
 	Statement stmt = conn.createStatement();
 	
 	String user = request.getParameter("exUser");
-	String password = request.getParameter("exPass");
 	
 	String check_user = "SELECT * FROM user_list";
-	int user_exsist = 0;
-	int user_pass = 0;
+	int user_exist = 0;
 	
-	ResultSet all_userpass = stmt.executeQuery(check_user);
+	ResultSet all_users = stmt.executeQuery(check_user);
 	
-	while(all_userpass.next()){
-		if(all_userpass.getString("username").equals(user)&&all_userpass.getString("password").equals(password)){
-			user_exsist = 1;
-			user_pass = 1;
+	while(all_users.next()){
+		if(all_users.getString("username").equals(user)){
+			user_exist = 1;
 			//deletion of key
-			String quer = String.format("DELETE FROM user_list WHERE username = %s and password = %s","'"+user+"'", "'"+password+"'");
+			String quer = String.format("DELETE FROM user_list WHERE username = %s","'"+user+"'");
 			stmt.executeUpdate(quer);	
 			break;
 		}
-		if(all_userpass.getString("username").equals(user)&&!all_userpass.getString("password").equals(password)){
-			user_exsist = 1;
-			user_pass = 0;
-		}
 	}
 	
-	if(user_exsist==1&&user_pass==1){
+	if(user_exist==1){
 		//delete 
 		out.print("Deletion Successful!");
 	}
 	
-	if(user_exsist==1 && user_pass!=1){
-		
-		out.print("incorrect password");
-	}
 	
-	if(user_exsist==0){
+	if(user_exist==0){
 		out.print("username does not exsist");
 	}
-	all_userpass.close();
+	all_users.close();
 	stmt.close();
 	conn.close();
 	
